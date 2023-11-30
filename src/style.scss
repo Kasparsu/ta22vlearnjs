@@ -1,4 +1,4 @@
-$bgcolor: coral;
-body {
-    background-color: darken($bgcolor, 30);
-}
+@charset "utf-8";
+$primary: coral;
+
+@import "../node_modules/bulma/bulma.sass";

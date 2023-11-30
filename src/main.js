@@ -1,6 +1,8 @@
-import hello from './module.js';
-const hello2 = require('./common.js');
 import './style.scss';
-hello();
-hello2();
-console.log('hello');
+
+import { createApp } from 'vue';
+
+import App from './App.vue';
+
+let app = createApp(App);
+app.mount('#app');
