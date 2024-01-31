@@ -5,9 +5,12 @@
                 Prev
             </button>
         </p>
-        <p class="control">
-            <button class="button is-static">
-                {{ page }}/{{ info.pages }}
+        <p v-for="label in generatePagination(page, info.pages)" class="control">
+            <button 
+                class="button" 
+                :class="{'is-static': label==='...', 'is-primary': label===page }"
+                @click="getPage(label)">
+                {{ label }}
             </button>
         </p>
         <p class="control">
@@ -40,6 +43,11 @@ function getCharacters(url){
     });
 }
 
+function getPage(value){
+    getCharacters('https://rickandmortyapi.com/api/character?page=' + value);
+    page.value = value;
+}
+
 function next(){
     getCharacters(info.value.next);
     page.value++;
@@ -48,4 +56,24 @@ function prev(){
     getCharacters(info.value.prev);
     page.value--;
 }
+
+function generatePagination(current,total){
+    let pages = [];
+    for(let i=1;i<=3;i++){
+        pages[i] = i;
+    }
+    if(current>2 && current<total-1){
+        pages.push('...');
+        for(let i=current-1;i<=current+1;i++){
+            pages[i] = i;
+        }
+    }
+    pages.push('...');
+    for(let i=total-2;i<=total;i++){
+        pages[i] = i;
+    }
+    return pages.filter(val => val);
+}
+
+console.log(generatePagination(41, 42));
 </script>
