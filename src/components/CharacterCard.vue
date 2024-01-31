@@ -12,7 +12,28 @@
         </div>
         <div class="card-content">
             <div class="content">
-
+                <table class="table">
+                    <tr>
+                        <th>Status</th>
+                        <td>{{ character.status }}</td>
+                    </tr>
+                    <tr>
+                        <th>Gender</th>
+                        <td>{{ character.gender }}</td>
+                    </tr>
+                    <tr>
+                        <th>Species</th>
+                        <td>{{ character.species }}</td>
+                    </tr>
+                    <tr>
+                        <th>Origin</th>
+                        <td>{{ character.origin.name }}</td>
+                    </tr>
+                    <tr>
+                        <th>Location</th>
+                        <td>{{ character.location.name }}</td>
+                    </tr>
+                </table>
             </div>
         </div>
     </div>
