@@ -54,11 +54,10 @@ for(let i = 0; i<256; i++){
 }
 
 
-for(let r = 0; r<256; r++){
-    for(let g = 0; g<256; g++){
+for(let r = 0; r<1; r++){
+    for(let g = 0; g<1; g++){
         for(let b = 0; b<256; b++){
             write(`\x1B[48;2;${r};${g};${b}m`); write(' ');
         }
     }
-   
 }
