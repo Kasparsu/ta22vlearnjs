@@ -1,19 +1,60 @@
+var readline = require('readline');
+
+readline.emitKeypressEvents(process.stdin);
+
+if (process.stdin.isTTY) {
+    process.stdin.setRawMode(true);
+}
+process.stdin.on('keypress', (chunk, key) => {
+    //console.log(key);
+    if (key && key.name == 'q'){
+        process.exit();
+    }
+    if (key && key.name == 'c' && key.ctrl){
+        process.exit();
+    }
+    if (key && key.name == 'up'){
+        position--;
+        
+        writeOptions();
+    }
+    if (key && key.name == 'down'){
+        position++;
+        writeOptions();
+    }
+    if (key && key.name == 'return'){
+        console.log('User has selected: ' + options[position]);
+    }
+});
+
+
 function write(text){
     process.stdout.write(text);
 }
 
-//write('\x1B[1;30m'); write('\u0007');  write('\n'); //bell symbol
-// write('hello world');
+let options = ['piim', 'sai', 'leib'];
+let position = 0;
+let first = true;
+function writeOptions(){
+    if(!first){
+        write(`\x1B[${options.length}F`);
+    }
+    if(position<0){
+        position = options.length-1;
+    }
+    if(position>options.length-1){
+        position = 0;
+    }
+    options.forEach((option, key) => {
+        if(key == position){
+            write('\x1B[7m');
+        }
+        write(option); write('\n');
+        if(key == position){
+            write('\x1B[27m');
+        }
+    });
+    first = false;
+}
 
-// setTimeout(() => {
-//     write('\x1B[5D'); write('TA22V'); // A -> up B ->down C-> right D->left
-// }, 5000);
-let date = new Date();
-write(date.toTimeString().substring(0, 8));
-setInterval(() => {
-    write('\x1B[?25l'); // cursor is invisible
-    write('\x1B[8D');
-    date = new Date();
-    write(date.toTimeString().substring(0, 8));
-    write('\x1B[?25h'); // cursor is visible
-}, 0);
+writeOptions();
