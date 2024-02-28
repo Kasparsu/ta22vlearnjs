@@ -24,6 +24,7 @@ process.stdin.on('keypress', (chunk, key) => {
     }
     if (key && key.name == 'return'){
         console.log('User has selected: ' + options[position]);
+        process.exit();
     }
 });
 
@@ -32,7 +33,7 @@ function write(text){
     process.stdout.write(text);
 }
 
-let options = ['piim', 'sai', 'leib'];
+let options = ['piim', 'sai', 'leib', 'candy', 'fruit'];
 let position = 0;
 let first = true;
 function writeOptions(){
