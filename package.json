@@ -31,6 +31,7 @@
     "bresenham": "^0.0.4",
     "bulma": "^0.9.4",
     "chalk": "^5.3.0",
+    "cheerio": "^1.0.0-rc.12",
     "drawille": "^2.0.2",
     "gl-matrix": "^3.4.3",
     "leaflet": "^1.9.4",
