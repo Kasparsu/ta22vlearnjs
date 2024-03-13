@@ -6,13 +6,14 @@ if(!fs.existsSync('cache')){
     fs.mkdirSync('cache');
 }
 const baseUrl = 'https://wumo.com';
-let link = baseUrl + '/wumo/2024/03/13';
+let link = '/wumo/2024/03/13';
 for(let i = 0; i<10; i++){
-    let cachePath = `cache/${i}.html`;
+    let cacheName = link.replaceAll('/', '')
+    let cachePath = `cache/${cacheName}.html`;
     let data;
     if(!fs.existsSync(cachePath)){
         await sleep(1000);
-        let res = await axios.get(link);
+        let res = await axios.get(baseUrl + link);
         //CACHE
         fs.writeFileSync(cachePath, res.data);
         data = res.data;
@@ -25,7 +26,7 @@ for(let i = 0; i<10; i++){
     console.log(img.attr('src'));
     console.log(img.attr('alt'));
     let prev = $('a.prev');
-    link = baseUrl + prev.attr('href');
+    link = prev.attr('href');
     
 }
 
