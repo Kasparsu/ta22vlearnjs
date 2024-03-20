@@ -11,6 +11,7 @@ import ChuckNorris from './pages/ChuckNorris.vue';
 import RickAndMorty from './pages/RickAndMorty.vue';
 import LeafletMaps from './pages/LeafletMaps.vue';
 import WebSocket from './pages/WebSocket.vue';
+import CanvasApi from './pages/CanvasApi.vue';
 
 const routes = [
     { path: '/', component: ToDo, name: 'ToDo' },
@@ -18,6 +19,7 @@ const routes = [
     { path: '/chuck', component: ChuckNorris, name: 'Chuck Norris' },
     { path: '/rickandmorty', component: RickAndMorty, name: 'Rick And Morty' },
     { path: '/ws', component: WebSocket, name: 'WebSocket' },
+    { path: '/canvas', component: CanvasApi, name: 'Canvas' },
 ];
 
 const router = createRouter({
